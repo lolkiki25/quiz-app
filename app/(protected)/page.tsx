@@ -1,0 +1,36 @@
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <div className="flex justify-center pt-20 h-screen w-screen">
+      <div className="">
+        <div className="flex items-center justify-between">
+          <div className="flex gap-3 items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+              <path d="M3.66667 1V6.33333M22.3333 19.6667V25M1 3.66667H6.33333M19.6667 22.3333H25M13 1L10.4507 8.75067C10.3202 9.14735 10.0984 9.50784 9.80312 9.80312C9.50784 10.0984 9.14735 10.3202 8.75067 10.4507L1 13L8.75067 15.5493C9.14735 15.6798 9.50784 15.9016 9.80312 16.1969C10.0984 16.4922 10.3202 16.8527 10.4507 17.2493L13 25L15.5493 17.2493C15.6798 16.8527 15.9016 16.4922 16.1969 16.1969C16.4922 15.9016 16.8527 15.6798 17.2493 15.5493L25 13L17.2493 10.4507C16.8527 10.3202 16.4922 10.0984 16.1969 9.80312C15.9016 9.50784 15.6798 9.14735 15.5493 8.75067L13 1Z" stroke="#09090B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <h1 className="text-2xl font-bold">Quick test</h1>
+          </div>
+          <button className="border px-2 flex items-center justify-center">x</button>
+        </div>
+        <p className="text-gray-500 mt-2">Take a quick test about your knowledge from your content</p>
+        <div className="flex flex-col bg-white border p-7 mt-6">
+          <div className="flex justify-between gap-10">
+            <h1 className="text-xl">What was Genghis Khan’s birth name?</h1>
+            <h1>1 <span className="text-gray-500 text-sm font-inter">/5</span></h1>
+          </div>
+          <div className="flex gap-2">
+            <div className="mt-6 flex flex-col gap-2 w-full">
+              <h1 className="border py-1 items-center flex justify-center">Yesugei</h1>
+              <h1 className="border py-1 items-center flex justify-center">Yesugei</h1>
+            </div>
+            <div className="mt-6 flex flex-col gap-2 w-full">
+              <h1 className="border py-1 items-center flex justify-center">Yesugei</h1>
+              <h1 className="border py-1 items-center flex justify-center">Yesugei</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
