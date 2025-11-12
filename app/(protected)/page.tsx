@@ -27,7 +27,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex w-screen h-screen">
+    <div className="flex w-screen ">
       <AppSidebar items={articles} />
       <div className="flex justify-center pt-20 w-full">
         <div className="border p-8 bg-white max-w-[600px] rounded-lg">
