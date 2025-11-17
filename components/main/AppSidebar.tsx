@@ -16,7 +16,7 @@ import {
 export function AppSidebar({ items }: { items: { title: string, url: string }[] }) {
   return (
     <Sidebar>
-      <SidebarContent className="pt-[50px] bg-white">
+      <SidebarContent className="pt-[60px] bg-white">
         <SidebarGroup>
           <SidebarGroupLabel className="text-[17px] font-bold text-black">
             History

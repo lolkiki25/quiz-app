@@ -10,37 +10,53 @@ export default function Home() {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
 
-  const handleGenerate = () => {
-    if (!title.trim() || !content.trim()) return alert("Гарчиг болон текстээ бөглөнө үү.")
-    
-    // хураангуй үүсгэх логик (AI дуудаж болно)
-    // Одоогоор зөвхөн sidebar-д нэмнэ
-    const newItem = {
-      title,
-      url: "#",
-    }
-    setArticles((prev) => [newItem, ...prev]) // хамгийн дээр нэмнэ
-
-    // input-уудыг цэвэрлэх
-    setTitle("")
-    setContent("")
+const handleGenerate = async () => {
+  if (!title.trim() || !content.trim()) {
+    return alert("Гарчиг болон текстээ бөглөнө үү.")
   }
+
+  // AI API руу илгээх
+  const res = await fetch("/api/gemini-ai", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title, content })
+  })
+
+  const data = await res.json()
+
+  if (data.success) {
+    console.log("AI Output:", data.output)
+
+    // ✅ AI-с ирсэн асуултыг alert биш UI-д харуулж болно
+    alert("AI Questions:\n" + data.output)
+  } else {
+    return alert("AI error")
+  }
+
+  // Sidebar-д хадгалах
+  const newItem = { title, url: "#" }
+  setArticles((prev) => [newItem, ...prev])
+
+  // Input-уудыг цэвэрлэх
+  setTitle("")
+  setContent("")
+}
 
   return (
     <div className="flex w-screen ">
       <AppSidebar items={articles} />
-      <div className="flex justify-center pt-20 w-full">
-        <div className="border p-8 bg-white max-w-[600px] rounded-lg">
+      <div className="flex justify-center pt-20 p-50 w-full">
+        <div className="border p-8 bg-white rounded-lg">
           <div className="flex items-center justify-between">
-            <div className="flex gap-3 items-center">
-              <h1 className="text-2xl font-bold">Article Quiz Generator</h1>
-            </div>
+            <h1 className="text-2xl font-bold">Article Quiz Generator</h1>
           </div>
+
           <p className="text-gray-500 mt-2">
             Paste your article below to generate a summary and quiz question. Your articles will be saved in the sidebar.
           </p>
 
           <div className="flex flex-col mt-6 gap-5">
+
             <div>
               <b className="text-gray-500 text-sm">Article Title</b>
               <Input
@@ -65,6 +81,7 @@ export default function Home() {
                 Generate summary
               </Button>
             </div>
+
           </div>
         </div>
       </div>
